@@ -45,10 +45,10 @@ app.use(session({
 //enable controllers
 app.use('/users', usersController);
 app.use('/sessions', sessionsController);
-app.use('/regulars', regularssController);
-app.use('/baristas', baristasController);
+// app.use('/regulars', regularsController);
+// app.use('/baristas', baristasController);
 
 
 app.listen(PORT, () => {
   console.log("CONNECTED TO THE PAST: ", PORT);
-}
+});
