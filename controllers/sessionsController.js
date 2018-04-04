@@ -6,7 +6,7 @@ router.post('/login', async (req, res) => {
   try{
     const user = await User.findOne({ username: req.body.username});
     // user.authenticate(req.body.password);
-    if (user.authenticate(req.body.password)) {
+    if (user.auth(req.body.password)) {
       req.session.user = user;
       res.status(200).json(user);
     } else {
