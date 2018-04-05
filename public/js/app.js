@@ -11,6 +11,8 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.regulars = []; //this array will hold all regular information
   this.baristaForm = {}; //will assign value on ng submit html side
   this.updateBaristaForm = {};
+  this.regularForm = {};
+  this.updateRegularForm = {};
   this.LoginBox = false;
   this.LogReg = true;
 
@@ -119,14 +121,51 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
       this.baristas.splice(updateByIndex, 1, response.data)
       this.updateBaristaForm = {};
 
-    })
+    }).catch(err => console.error('Catch:', err));
   }
 
   //DELETE BARISTA
+  this.deleteBarista = (barista) => {
+    $http({
+      method: 'delete',
+      url: '/baristas/' + barista._id
+    }).then(response => {
+      console.log('Deleted:', response.data);
+
+      const removeByIndex = this.baristas.findIndex(item => item._id === barista._id);
+      this.baristas.splice(removeByIndex, 1);
+    }).catch(err => console.error('Catch:', err));
+  }
 
   //ADD REGULAR
+  this.addRegular = () => {
+    $http({
+      method: 'post',
+      url: '/regulars',
+      data: this.regularForm
+    }).then(response => {
+      console.log('New regular form:', response.data);
+      this.regulars.push(response.data);
+      this.regularForm = {};
+      $scope.regularForm.$setUntouched();
+      $scope.regularForm.$setPristine();
+    }).catch(err => console.error('Catch:', err));
+  }
 
   //UPDATE REGULAR
+  this.updateRegular = (regular) => {
+    $http({
+      method: 'put',
+      url: '/regulars/' + regular._id,
+      data: this.updateRegularForm
+    }).then(response => {
+      console.log('updated regular:', response.data);
+
+      const updateByIndex = this.baristas.findIndex(item => item._id === response.data._id);
+      this.baristas.splice(updateByIndex, 1, response.data);
+      this.updateRegularForm = {};
+    }).catch(err => consoler.error('Catch:', err));
+  }
 
   //DELETE REGULAR
 
