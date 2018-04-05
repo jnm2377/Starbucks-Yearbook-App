@@ -1,0 +1,22 @@
+<div ng-if='ctrl.LogReg'>
+  <h3 ng-click="ctrl.closeLogreg()">x</h3>
+  <div ng-if="ctrl.LoginBox == true">
+    <p>Log In</p>
+    <form ng-submit='ctrl.loginUser()'>
+      <input type="text" placeholder="Username" ng-model='ctrl.loginForm.username' />
+      <input type="password" placeholder="Password" ng-model="ctrl.loginForm.password">
+      <input type="submit" name="" value="Log In">
+    </form>
+    <span ng-click="ctrl.LoginBox = false">Register</span>
+  </div>
+
+  <div ng-if="ctrl.LoginBox == false">
+    <p>Register</p>
+    <form class="" ng-submit='ctrl.registerAdmin()'>
+      <input type="text" placeholder="Username" ng-model="ctrl.AdminForm.username" />
+      <input type="password" placeholder="Password" ng-model="ctrl.AdminForm.password">
+      <input type="submit" value="Register Admin">
+    </form>
+    <span ng-click="ctrl.LoginBox = true">Login</span>
+  </div>
+</div>
