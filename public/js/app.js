@@ -111,6 +111,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
 
   //UPDATE BARISTA
   this.updateBarista = (barista) => {
+    this.updateBaristaForm = barista;
     $http({
       method: 'put',
       url: '/baristas/' + barista._id,
