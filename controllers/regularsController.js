@@ -41,8 +41,8 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res ) => {
   try{
     const regular = await Regular.findByIdAndRemove(req.params.id);
-    res.status(200).json({message: 'user removed'});
-  } catch (e) {
+    res.status(200).json({message: 'regular removed'});
+  } catch (err) {
     console.log(err);
     res.status(400).json({err: err.message})
   }
