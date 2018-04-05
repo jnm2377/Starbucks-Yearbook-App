@@ -15,6 +15,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.updateRegularForm = {};
   this.LoginBox = false;
   this.LogReg = true;
+  this.edit = false;
 
   //LOGIN MODAL
   this.openlogreg = () => {
@@ -124,6 +125,11 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
     }).catch(err => console.error('Catch:', err));
   }
 
+  //OPEN EDIT MODAL
+  this.openEdit = () => {
+    this.edit = true;
+  }
+
   //DELETE BARISTA
   this.deleteBarista = (barista) => {
     $http({
@@ -161,13 +167,23 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
     }).then(response => {
       console.log('updated regular:', response.data);
 
-      const updateByIndex = this.baristas.findIndex(item => item._id === response.data._id);
-      this.baristas.splice(updateByIndex, 1, response.data);
+      const updateByIndex = this.regulars.findIndex(item => item._id === response.data._id);
+      this.regulars.splice(updateByIndex, 1, response.data);
       this.updateRegularForm = {};
     }).catch(err => consoler.error('Catch:', err));
   }
 
   //DELETE REGULAR
+  this.deleteRegular = (regular) => {
+    $http({
+      method: 'delete',
+      url: '/regulars/' + regular._id
+    }).then(response => {
+      console.log('Deleted:', response.data);
 
+      const removeByIndex = this.regulars.findIndex(item => item._id === regular._id);
+      this.regulars.splice(removeByIndex, 1);
+    }).catch(err => consoler.error('Catch:', err));
+  }
 
 }]);
