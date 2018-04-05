@@ -1,5 +1,5 @@
 <div>
-    <div class="baristas" ng-repeat='barista in ctrl.baristas'>
+    <div class="baristas" ng-repeat='barista in ctrl.baristas' >
       <img ng-src="{{barista.photo}}" alt="Barista Photo">
       <h3>Name:</h3>
       <h4 class="baristaInfo">{{barista.name}}</h4>
@@ -7,5 +7,6 @@
       <h4 class="baristaInfo">{{barista.drink}}</h4>
       <h3>Fun Fact about yourself?:</h3>
       <h4 class="baristaInfo">{{barista.funFact}}</h4>
+      <button type="button" ng-if='ctrl.logged == true'>Edit</button>
     </div>
 </div>

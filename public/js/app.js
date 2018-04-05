@@ -11,11 +11,25 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.regulars = []; //this array will hold all regular information
   this.baristaForm = {}; //will assign value on ng submit html side
   this.updateBaristaForm = {};
+  this.LoginBox = false;
+  this.LogReg = true;
+
+  //LOGIN MODAL
+  this.openlogreg = () => {
+    this.LogReg = true;
+    console.log("I clicked on sign in", this.clickSignIn);
+    this.LoginBox = true;
+    console.log("login should open:", this.LoginBox);
+  }
+
+  this.closelogreg = () => {
+    this.LogReg = false;
+  }
 
   //LOGIN
   this.login = () => {
     $http({
-      method: '/post',
+      method: 'post',
       url: '/sessions/login',
       data: this.loginForm
     }).then(response => {
