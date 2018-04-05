@@ -4,7 +4,7 @@ const Regular = require('../models/regulars.js')
 
 router.get('/', async (req, res) => {
     const regulars = await Regulars.find();
-    res.status(200).json(users);
+    res.status(200).json(regulars);
 });
 
 router.get('/:id', async (req, res) => {
@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try{
     const updatedRegular = await Regular.findByIdAndUpdate(req.params.id, req.body, {new: true, set:true});
-    res.status(200).json(updatedUser);
+    res.status(200).json(updatedRegular);
   } catch(e){
     console.log(e);
     res.status(400).json({err: e.message});
