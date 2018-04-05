@@ -45,7 +45,7 @@ router.delete('/:id', async (req, res) => {
     res.status(200).json({message: 'barista removed'})
   } catch (err) {
     console.log(err);
-    res.status(400).json({errL err.message})
+    res.status(400).json({err: err.message})
   }
 })
 

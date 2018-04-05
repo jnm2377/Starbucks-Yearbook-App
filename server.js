@@ -45,8 +45,8 @@ app.use(session({
 //enable controllers
 app.use('/users', usersController);
 app.use('/sessions', sessionsController);
-// app.use('/regulars', regularsController);
-// app.use('/baristas', baristasController);
+app.use('/regulars', regularsController);
+app.use('/baristas', baristasController);
 
 
 app.listen(PORT, () => {
