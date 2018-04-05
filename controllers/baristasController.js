@@ -20,7 +20,6 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try{
     const barista = await Barista.create(req.body);
-    req.session.barista = barista;
     res.status(201).json(barista);
   } catch (err){
     console.log(err);
