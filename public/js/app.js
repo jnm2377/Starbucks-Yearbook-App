@@ -57,7 +57,7 @@ app.controller('MainController', ['$http', function($http) {
     }).then(response => {
       console.log(response.data);
       this.baristas = response.data;
-    })catch(err => console.error('Catch:', err));
+    }).catch(err => console.error('Catch:', err));
   }
 
   this.getBaristas();
