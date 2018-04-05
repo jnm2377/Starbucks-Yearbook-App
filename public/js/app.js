@@ -10,6 +10,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.baristas = []; //this array will hold all barista information
   this.regulars = []; //this array will hold all regular information
   this.baristaForm = {}; //will assign value on ng submit html side
+  this.updateBaristaForm = {};
 
   //LOGIN
   this.login = () => {
@@ -88,10 +89,24 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
       this.baristaForm = {};
       $scope.baristaForm.$setUntouched();
       $scope.baristaForm.setPristine();
-    })
+    }).catch(err => console.error('Catch:', err));
   }
 
   //UPDATE BARISTA
+  this.updateBarista = (barista) => {
+    $http({
+      method: 'put',
+      url: '/baristas/' + barista._id,
+      data: this.updateBaristaForm
+    }).then(response => {
+      console.log('Updated barista:', response.data);
+
+      const updateByIndex = this.baristas.findIndex(item => item._id === response.data._id);
+      this.baristas.splice(updateByIndex, 1, response.data)
+      this.updateBaristaForm = {};
+
+    })
+  }
 
   //DELETE BARISTA
 
