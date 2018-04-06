@@ -11,7 +11,8 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.regulars = []; //this array will hold all regular information
   this.baristaForm = {}; //will assign value on ng submit html side
   this.regularForm = {};
-  this.currentEdit = {};
+  this.currentEditB = {};
+  this.currentEditR = {};
   this.LoginBox = false;
   this.LogReg = true;
   this.edit = false;
@@ -111,29 +112,40 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.updateBarista = () => {
     $http({
       method: 'put',
-      url: '/baristas/' + this.currentEdit._id,
-      data: this.currentEdit
+      url: '/baristas/' + this.currentEditB._id,
+      data: this.currentEditB
     }).then(response => {
       console.log('Updated barista:', response.data);
 
       const updateByIndex = this.baristas.findIndex(item => item._id === response.data._id);
       this.baristas.splice(updateByIndex, 1, response.data)
       this.edit = false;
-      this.currentEdit = {};
+      this.currentEditB = {};
 
     }).catch(err => console.error('Catch:', err));
   }
 
   //OPEN EDIT MODAL
-  this.openEdit = (person) => {
+  this.openEditB = (barista) => {
     this.edit = true;
-    this.currentEdit = angular.copy(person);
-    console.log('Current edit:', this.currentEdit);
+    this.currentEditB = angular.copy(barista);
+    console.log('Current edit:', this.currentEditB);
+  }
+
+  this.dontEditB = () => {
+    this.edit = false;
+    this.currentEditB = {};
+  }
+
+  this.openEdit = (regular) => {
+    this.edit = true;
+    this.currentEditR = angular.copy(regular);
+    console.log('Current edit:', this.currentEditR);
   }
 
   this.dontEdit = () => {
     this.edit = false;
-    this.currentEdit = {};
+    this.currentEditR = {};
   }
 
   //DELETE BARISTA
@@ -168,15 +180,15 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.updateRegular = () => {
     $http({
       method: 'put',
-      url: '/regulars/' + this.currentEdit._id,
-      data: this.currentEdit
+      url: '/regulars/' + this.currentEditR._id,
+      data: this.currentEditR
     }).then(response => {
       console.log('updated regular:', response.data);
 
       const updateByIndex = this.regulars.findIndex(item => item._id === response.data._id);
       this.regulars.splice(updateByIndex, 1, response.data);
       this.edit = false;
-      this.currentEdit = {};
+      this.currentEditR = {};
 
     }).catch(err => consoler.error('Catch:', err));
   }
