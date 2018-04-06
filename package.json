@@ -1,0 +1,30 @@
+{
+  "name": "starbucks-yearbook-app",
+  "version": "1.0.0",
+  "description": "An online \"yearbook\" of the Starbucks at Parmer and Dessau's (Austin, Tx) regular customers, created for and by baristas in order to make memories and recognize valued customers.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jnm2377/Starbucks-Yearbook-App.git"
+  },
+  "author": "Josefina and Hector",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jnm2377/Starbucks-Yearbook-App/issues"
+  },
+  "homepage": "https://github.com/jnm2377/Starbucks-Yearbook-App#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "method-override": "^2.3.10",
+    "mongoose": "^5.0.12",
+    "morgan": "^1.9.0",
+    "pretty-error": "^2.1.1",
+    "session": "^0.1.0"
+  }
+}
