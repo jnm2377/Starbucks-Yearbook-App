@@ -10,10 +10,8 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.baristas = []; //this array will hold all barista information
   this.regulars = []; //this array will hold all regular information
   this.baristaForm = {}; //will assign value on ng submit html side
-  this.updateBaristaForm = {};
   this.regularForm = {};
   this.currentEdit = {};
-  this.updateRegularForm = {};
   this.LoginBox = false;
   this.LogReg = true;
   this.edit = false;
