@@ -12,6 +12,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.baristaForm = {}; //will assign value on ng submit html side
   this.updateBaristaForm = {};
   this.regularForm = {};
+  this.currentEdit = {};
   this.updateRegularForm = {};
   this.LoginBox = false;
   this.LogReg = true;
@@ -110,24 +111,32 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   }
 
   //UPDATE BARISTA
-  this.updateBarista = (barista) => {
+  this.updateBarista = () => {
     $http({
       method: 'put',
-      url: '/baristas/' + barista._id,
-      data: this.updateBaristaForm
+      url: '/baristas/' + this.currentEdit._id,
+      data: this.currentEdit
     }).then(response => {
       console.log('Updated barista:', response.data);
 
       const updateByIndex = this.baristas.findIndex(item => item._id === response.data._id);
       this.baristas.splice(updateByIndex, 1, response.data)
-      this.updateBaristaForm = {};
+      this.edit = false;
+      this.currentEdit = {};
 
     }).catch(err => console.error('Catch:', err));
   }
 
   //OPEN EDIT MODAL
-  this.openEdit = () => {
+  this.openEdit = (person) => {
     this.edit = true;
+    this.currentEdit = angular.copy(person);
+    console.log('Current edit:', this.currentEdit);
+  }
+
+  this.dontEdit = () => {
+    this.edit = false;
+    this.currentEdit = {};
   }
 
   //DELETE BARISTA
@@ -159,17 +168,19 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   }
 
   //UPDATE REGULAR
-  this.updateRegular = (regular) => {
+  this.updateRegular = () => {
     $http({
       method: 'put',
-      url: '/regulars/' + regular._id,
-      data: this.updateRegularForm
+      url: '/regulars/' + this.currentEdit._id,
+      data: this.currentEdit
     }).then(response => {
       console.log('updated regular:', response.data);
 
       const updateByIndex = this.regulars.findIndex(item => item._id === response.data._id);
       this.regulars.splice(updateByIndex, 1, response.data);
-      this.updateRegularForm = {};
+      this.edit = false;
+      this.currentEdit = {};
+
     }).catch(err => consoler.error('Catch:', err));
   }
 
