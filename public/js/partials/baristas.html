@@ -7,7 +7,7 @@
       <h4 class="baristaInfo">{{barista.drink}}</h4>
       <h3>Fun Fact about yourself?:</h3>
       <h4 class="baristaInfo">{{barista.funFact}}</h4>
-      <button type="button" ng-if='ctrl.logged == true' ng-click="ctrl.openEdit(barista)" >Edit</button>
+      <button type="button" ng-if='ctrl.logged == true' ng-click="ctrl.openEdit(barista)" >Edit Barista</button>
       <div ng-if="ctrl.edit">
         <form class="" ng-submit='ctrl.updateBarista()'>
           <h4>Name:</h4>

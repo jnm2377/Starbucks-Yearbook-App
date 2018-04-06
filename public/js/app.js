@@ -49,7 +49,6 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
       data: this.registerForm
     }).then(response => {
       console.log(response.data);
-
       this.user = response.data;
       this.logged = true;
     }).catch( err => console.error('Catch:', err.message));

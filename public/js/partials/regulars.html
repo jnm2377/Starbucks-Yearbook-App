@@ -7,5 +7,19 @@
       <h4 class="regularInfo">{{regular.drink}}</h4>
       <h3>Fun Fact about yourself?:</h3>
       <h4 class="regularInfo">{{regular.funFact}}</h4>
+      <button type="button" ng-if='ctrl.logged == true' ng-click="ctrl.openEdit(regular)">Edit Regular</button>
+      <div ng-if="ctrl.edit">
+        <form class="" ng-submit='ctrl.updateRegular()'>
+          <h4>Name:</h4>
+          <input type="text" ng-model="ctrl.currentEdit.name">
+          <h4>Drink:</h4>
+          <input type="text" ng-model="ctrl.currentEdit.drink">
+          <h4>Fun Fact:</h4>
+          <input type="text" ng-model="ctrl.currentEdit.funFact">
+          <h4>Photo</h4>
+          <input type="text" ng-model="ctrl.currentEdit.photo">
+          <input type="Submit" name="" value="Edit Regular">
+        </form>
+      </div>
     </div>
 </div>

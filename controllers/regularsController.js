@@ -3,7 +3,7 @@ const router = express.Router();
 const Regular = require('../models/regulars.js')
 
 router.get('/', async (req, res) => {
-    const regulars = await Regulars.find();
+    const regulars = await Regular.find();
     res.status(200).json(regulars);
 });
 
