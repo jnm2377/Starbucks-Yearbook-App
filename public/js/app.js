@@ -30,6 +30,38 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
     this.LogReg = false;
   }
 
+  //OPEN ADD BARISTA MODAL
+  this.openAddB = (barista) => {
+    this.add = true;
+    console.log('Add new barista');
+  }
+  //OPEN ADD REGULAR MODAL
+  this.openAddR = (regular) => {
+    this.add = true;
+    console.log('Add new regular');
+  }
+  //OPEN EDIT Barista MODAL
+  this.openEditB = (barista) => {
+    this.edit = true;
+    this.currentEditB = angular.copy(barista);
+    console.log('Current edit:', this.currentEditB);
+  }
+
+  this.dontEditB = () => {
+    this.edit = false;
+    this.currentEditB = {};
+  }
+  //OPEN EDIT REGULAR MODAL
+  this.openEdit = (regular) => {
+    this.edit = true;
+    this.currentEditR = angular.copy(regular);
+    console.log('Current edit:', this.currentEditR);
+  }
+
+  this.dontEdit = () => {
+    this.edit = false;
+    this.currentEditR = {};
+  }
   //LOGIN
   this.login = () => {
     $http({
@@ -124,33 +156,6 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
       this.currentEditB = {};
 
     }).catch(err => console.error('Catch:', err));
-  }
-  //OPEN ADD BARISTA MODAL
-  this.openAddB = (barista) => {
-    this.add = true;
-    console.log('Add new barista');
-  }
-  //OPEN EDIT REGULAR MODAL
-  this.openEditB = (barista) => {
-    this.edit = true;
-    this.currentEditB = angular.copy(barista);
-    console.log('Current edit:', this.currentEditB);
-  }
-
-  this.dontEditB = () => {
-    this.edit = false;
-    this.currentEditB = {};
-  }
-//OPEN EDIT REGULAR MODAL
-  this.openEdit = (regular) => {
-    this.edit = true;
-    this.currentEditR = angular.copy(regular);
-    console.log('Current edit:', this.currentEditR);
-  }
-
-  this.dontEdit = () => {
-    this.edit = false;
-    this.currentEditR = {};
   }
 
   //DELETE BARISTA
