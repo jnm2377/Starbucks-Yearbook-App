@@ -7,6 +7,20 @@
       <h4 class="baristaInfo">{{barista.drink}}</h4>
       <h3>Fun Fact about yourself?:</h3>
       <h4 class="baristaInfo">{{barista.funFact}}</h4>
+      <button type="button" ng-if='ctrl.logged == true' ng-click="ctrl.openAddB(barista)">Add Barista</button>
+      <div ng-if="ctrl.add">
+        <form class="" ng-submit="ctrl.addBarista()">
+          <h4>Name:</h4>
+          <input type="text" ng-model="ctrl.barista.name">
+          <h4>Drink:</h4>
+          <input type="text" ng-model="ctrl.barista.drink">
+          <h4>Fun Fact:</h4>
+          <input type="text" ng-model="ctrl.barista.funFact">
+          <h4>Photo</h4>
+          <input type="text" ng-model="ctrl.barista.photo">
+          <input type="Submit" name="" value="Add Barista">
+        </form>
+      </div>
       <button type="button" ng-if='ctrl.logged == true' ng-click="ctrl.openEditB(barista)">Edit Barista</button>
       <div ng-if="ctrl.edit">
         <form class="" ng-submit='ctrl.updateBarista()'>

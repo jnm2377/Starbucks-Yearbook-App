@@ -16,6 +16,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.LoginBox = false;
   this.LogReg = true;
   this.edit = false;
+  this.add = false;
 
   //LOGIN MODAL
   this.openlogreg = () => {
@@ -124,8 +125,12 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
 
     }).catch(err => console.error('Catch:', err));
   }
-
-  //OPEN EDIT MODAL
+  //OPEN ADD BARISTA MODAL
+  this.openAddB = (barista) => {
+    this.add = true;
+    console.log('Add new barista');
+  }
+  //OPEN EDIT REGULAR MODAL
   this.openEditB = (barista) => {
     this.edit = true;
     this.currentEditB = angular.copy(barista);
@@ -136,7 +141,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
     this.edit = false;
     this.currentEditB = {};
   }
-
+//OPEN EDIT REGULAR MODAL
   this.openEdit = (regular) => {
     this.edit = true;
     this.currentEditR = angular.copy(regular);
