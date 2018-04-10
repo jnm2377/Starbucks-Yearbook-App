@@ -1,0 +1,80 @@
+.body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.greenHeaderTop {
+  width: 100%;
+  height: 100px;
+  background: #22411b;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 5px 0;
+  margin: 5px 0;
+  height: 40px;
+
+
+}
+
+.navBar {
+  margin: 0 20px;
+  font-family: 'Quicksand', sans-serif;
+  text-transform: uppercase;
+}
+
+.navbarCircle {
+  background: white;
+  height: 150px;
+  width: 150px;
+  border-radius: 150px;
+  margin-top: -65px;
+}
+
+.innerCircle {
+  height: 140px;
+  width: 140px;
+  border-radius: 150px;
+  background: #363434;
+  margin: 5px;
+
+}
+
+.textCircle {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.textCircle > h5 {
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.textCircle > h4 {
+  font-family: 'Petit Formal Script', cursive;
+  font-size: 20px;
+  color: #ebf080;
+}
+
+.headerImageBottom {
+  width: 100%;
+  height: 200px;
+  background: grey;
+}
