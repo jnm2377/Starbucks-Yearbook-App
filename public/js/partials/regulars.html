@@ -23,15 +23,15 @@
       </div>
       <button type="button" ng-if='ctrl.logged == true' ng-click="ctrl.openAddR(regular)">Add Regular</button>
         <div ng-if="ctrl.add">
-          <form class="" ng-submit="ctrl.addRegular()">
+          <form class="" ng-submit="ctrl.addRegular(regular)">
             <h4>Name:</h4>
-            <input type="text" ng-model="ctrl.barista.name">
+            <input type="text" ng-model="ctrl.regularForm.name">
             <h4>Drink:</h4>
-            <input type="text" ng-model="ctrl.barista.drink">
+            <input type="text" ng-model="ctrl.regularForm.drink">
             <h4>Fun Fact:</h4>
-            <input type="text" ng-model="ctrl.barista.funFact">
+            <input type="text" ng-model="ctrl.regularForm.funFact">
             <h4>Photo</h4>
-            <input type="text" ng-model="ctrl.barista.photo">
+            <input type="text" ng-model="ctrl.regularForm.photo">
             <input type="Submit" name="" value="Add Regular">
           </form>
         </div>
