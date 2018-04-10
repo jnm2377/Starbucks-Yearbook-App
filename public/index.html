@@ -21,26 +21,26 @@
 <header>
   <div class="greenHeaderTop"></div>
   <div class="nav">
-    <div class="navBar">Regulars</div>
+    <div class="navBar" ng-click="ctrl.viewRegulars()">Regulars</div>
     <div class="navbarCircle">
       <div class="innerCircle">
-        <div class="textCircle">
+        <div class="textCircle" ng-click="ctrl.viewHome()">
           <h5>Starbucks</h5>
           <h4>Parmer & Dessau</h4>
         </div>
       </div>
     </div>
-    <div class="navBar">Baristas</div>
+    <div class="navBar" ng-click="ctrl.viewBaristas()">Baristas</div>
   </div>
   <div class="headerImageBottom"></div>
 </header>
 
 
 <div class="">
-  <div ng-include="'/js/partials/home.html'"></div>
+  <div ng-if="ctrl.homePage" ng-include="'/js/partials/home.html'"></div>
   <div ng-include="'/js/partials/Login.html'"></div>
-  <div ng-include=" '/js/partials/baristas.html'"></div>
-  <div ng-include=" '/js/partials/regulars.html'"></div>
+  <div ng-if="ctrl.baristaPage" ng-include=" '/js/partials/baristas.html'"></div>
+  <div ng-if="ctrl.regularPage" ng-include=" '/js/partials/regulars.html'"></div>
 </div>
 
 </body>
