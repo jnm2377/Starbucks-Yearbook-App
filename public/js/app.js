@@ -17,6 +17,9 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
   this.LogReg = true;
   this.edit = false;
   this.add = false;
+  this.homePage = true;
+  this.baristaPage = false;
+  this.regularPage = false;
 
   //LOGIN MODAL
   this.openlogreg = () => {
@@ -214,6 +217,24 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope) {
       const removeByIndex = this.regulars.findIndex(item => item._id === regular._id);
       this.regulars.splice(removeByIndex, 1);
     }).catch(err => consoler.error('Catch:', err));
+  }
+
+  this.viewBaristas = () => {
+    this.homePage = false;
+    this.regularPage = false;
+    this.baristaPage = true;
+  }
+
+  this.viewHome = () => {
+    this.homePage = true;
+    this.regularPage = false;
+    this.baristaPage = false;
+  }
+
+  this.viewRegulars = () => {
+    this.homePage = false;
+    this.regularPage = true;
+    this.baristaPage = false;
   }
 
 }]);
